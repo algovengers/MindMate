@@ -12,7 +12,31 @@ const connectWithChatBot = async (req, res) => {
       // through err
       return;
     }
+    const foundHist = await chatHistModel
+      .find({ userId: req.userId })
+      .sort({ timestamp: 1 });
 
+    // console.log(foundHist);
+
+    let foundHistForGemini = [];
+    for (let conv of foundHist) {
+      foundHistForGemini.push({
+        role: "user",
+        parts: [
+          {
+            text: conv.prompt,
+          },
+        ],
+      });
+      foundHistForGemini.push({
+        role: "model",
+        parts: [
+          {
+            text: conv.response,
+          },
+        ],
+      });
+    }
     // console.log(foundHistForGemini[0]);
 
     const roomId = uuid();
@@ -32,14 +56,16 @@ const connectWithChatBot = async (req, res) => {
     });
 
     // Get history from mongo
-    const chat = startGeminiChat();
+    const chat = startGeminiChat(foundHistForGemini);
 
     wss.on("message", async (data) => {
       try {
         data = JSON.parse(data.toString());
 
         if (data?.type === "client:chathist") {
-          //send chat hist
+          wss.send(
+            JSON.stringify({ type: "server:chathist", data: foundHist })
+          );
         } else if (data?.type === "client:prompt") {
           if (data.prompt === undefined) {
             // throw err
@@ -47,8 +73,28 @@ const connectWithChatBot = async (req, res) => {
           }
 
           // Prompt by the user sent to gemini
+          const result = await chat.sendMessageStream(data.prompt);
+          let respText = "";
+          wss.send(JSON.stringify({ type: "server:response:start" }));
 
+          for await (const chunk of result.stream) {
+            const chunkText = chunk.text();
+
+            wss.send(
+              JSON.stringify({
+                type: "server:response:chunk",
+                chunk: chunkText,
+              })
+            );
+            respText += chunkText;
+          }
+          wss.send(JSON.stringify({ type: "server:response:end" }));
           // should be stored in the db
+          await chatHistModel.create({
+            userId: req.userId,
+            prompt: data.prompt,
+            response: respText,
+          });
         }
       } catch (error) {
         console.log(error);
