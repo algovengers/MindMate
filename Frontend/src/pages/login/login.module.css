@@ -1,0 +1,50 @@
+.pageContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #5efce8 0%, #736efe 100%);
+}
+
+.loginContainer {
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  width: 380px;
+  box-shadow: -1px 1px 6px 1px rgba(0, 0, 255, 0.2);
+}
+.loginContainer h4 {
+  color: var(--primary-color);
+}
+
+.loginContainer header {
+  text-align: center;
+}
+
+.loginContainer main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.8rem 0;
+}
+
+.loginContainer footer {
+  text-align: center;
+}
+
+.loginContainer footer span {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgotPasswordLink {
+  margin-top: 1.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: right;
+  cursor: pointer;
+}
+
+.loginContainer footer span:hover {
+  color: #1b1798;
+}
