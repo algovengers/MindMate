@@ -12,31 +12,7 @@ const connectWithChatBot = async (req, res) => {
       // through err
       return;
     }
-    const foundHist = await chatHistModel
-      .find({ userId: req.userId })
-      .sort({ timestamp: 1 });
 
-    // console.log(foundHist);
-
-    let foundHistForGemini = [];
-    for (let conv of foundHist) {
-      foundHistForGemini.push({
-        role: "user",
-        parts: [
-          {
-            text: conv.prompt,
-          },
-        ],
-      });
-      foundHistForGemini.push({
-        role: "model",
-        parts: [
-          {
-            text: conv.response,
-          },
-        ],
-      });
-    }
     // console.log(foundHistForGemini[0]);
 
     const roomId = uuid();
@@ -56,7 +32,7 @@ const connectWithChatBot = async (req, res) => {
     });
 
     // Get history from mongo
-    const chat = startGeminiChat(foundHistForGemini);
+    const chat = startGeminiChat();
 
     wss.on("message", async (data) => {
       try {
