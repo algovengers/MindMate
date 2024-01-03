@@ -44,6 +44,11 @@ const setupGeminiChat = async () => {
   geminiModel = genAI.getGenerativeModel({ model: MODEL_NAME });
 };
 
-const startGeminiChat = (history = []) => {};
+const startGeminiChat = (history = []) =>
+  geminiModel.startChat({
+    generationConfig,
+    safetySettings,
+    history: [...initHist, ...history],
+  });
 
 module.exports = { setupGeminiChat, geminiModel, startGeminiChat };
