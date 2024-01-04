@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&family=Inter:wght@400;500;700&family=JetBrains+Mono&family=Lato&family=Libre+Baskerville&family=Montserrat&family=Open+Sans:ital,wght@0,300;1,500&family=Poppins&family=Roboto&family=Ubuntu&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-* {
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&family=Inter:wght@400;500;700&family=JetBrains+Mono&family=Lato&family=Libre+Baskerville&family=Montserrat&family=Open+Sans:ital,wght@0,300;1,500&family=Poppins&family=Roboto&family=Ubuntu&display=swap');* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;

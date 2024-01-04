@@ -22,11 +22,19 @@
   border: none;
   outline: none;
   border: 1px solid var(--primary-color);
-  padding: 0.6em 0.8em;
+  padding: 0.6em 1.2em;
   width: 100%;
   border-radius: 1.5em;
-  background-color: #5efce8;
-  box-shadow: rgba(174, 169, 169, 0.16) 0px 3px 7px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+  box-shadow: rgba(174, 169, 169, 0.16) 0px 2px 5px;
+  transition: all 0.3s;
+}
+
+.inputContainer label input:hover,
+.inputContainer label input:focus {
+  border-color: black;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px;
 }
 
 .inputContainer > label > .error {

@@ -1,14 +1,18 @@
 import styles from "./button.module.css";
 
-function Button({ text, type, handleClick, style }) {
+function Button({ text, type, handleClick, style, logging }) {
   return (
-    <div className={styles.buttonContainer}>
+    <div
+      className={`${
+        logging ? styles.loggingButtonContainer : styles.buttonContainer
+      } mt-4`}
+    >
       <button
         type={type}
         onClick={(e) => {
           handleClick(e);
         }}
-        style={style ? style : {}}
+        style={style}
       >
         {text}
       </button>

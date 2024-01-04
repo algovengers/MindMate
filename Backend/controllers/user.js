@@ -84,3 +84,39 @@ async function login(req, res) {
     res.status(401).json({ message: "Invalid Access Token" });
   }
 }
+
+async function isUser(req, res) {
+  try {
+    console.log(req.cookies);
+    if (req.cookies.userid) {
+      const userid = req.cookies?.userid;
+      console.log(userid);
+      const user = await User.find({ id: userid });
+      console.log(user + "Here");
+      if (user) {
+        res.status(200).json({ message: "User validated" });
+      } else {
+        res.status(401).json({ error: "Logged Out" });
+      }
+    } else {
+      res.status(401).json({ error: "Logged Out" });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(401).json({ error: "Logged Out" });
+  }
+}
+
+async function logout(req, res) {
+  if (!req.cookies?.userid) {
+    res.status(401).json({ Error: "UserId not found" });
+    return;
+  }
+  res.cookie("userid", null, {
+    maxAge: 0,
+  });
+  res.status(200).json({ msg: "loggedout" });
+}
+
+module.exports = { signup, login, isUser, logout };
+
