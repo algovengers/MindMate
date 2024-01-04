@@ -45,7 +45,6 @@ function App() {
         />
         <Route path="/" element={<Homepage />} />
         <Route path="/message" element={<Message />} />
-<<<<<<< Updated upstream
         <Route
           path="/analysis"
           element={
@@ -54,10 +53,8 @@ function App() {
             </PrivateRouteAnalysis>
           }
         />
-=======
-        <Route path="/analysis" element={<Analysis />} />
         <Route path="*"  element = {<Error />} />
->>>>>>> Stashed changes
+
       </Routes>
     </BrowserRouter>
   );
