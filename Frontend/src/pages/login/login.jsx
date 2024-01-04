@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./login.module.css";
 import InputBox from "../../components/inputBox/inputBox";
 import Button from "../../components/button/button";
@@ -9,6 +9,7 @@ import {
   SignupWithEmail,
 } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import LoginContext from "../../context/context";
 
 function Login() {
   const [isRegistered, setIsRegister] = useState(true);
@@ -27,7 +28,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
-
+  const {login} = useContext(LoginContext)
   useEffect(() => {
     if (isRegistered === true) {
       setError({
@@ -144,30 +145,13 @@ function Login() {
     LoginandSignup();
   };
   useEffect(() => {
-    if (loggedIn) navigate("/message");
+    
+    if (loggedIn){ 
+      login()
+      navigate("/message")};
   }, [loggedIn]);
   useEffect(() => {
     if (Object.keys(error).length === 0) {
-      // if (!isRegistered && !isLoading) {
-      //   handleSignup(
-      //     loginData.name,
-      //     loginData.email,
-      //     loginData.password,
-      //     handleSetUserToken,
-      //     setIsLoading,
-      //     setUserId
-      //   );
-      // }
-      // if (isRegistered && !isLoading) {
-      //   loginData.name.toLocaleLowerCase();
-      //   handleSignin(
-      //     loginData.email,
-      //     loginData.password,
-      //     setIsLoading,
-      //     handleSetUserToken,
-      //     setUserId
-      //   );
-      // }
     }
   }, [error]);
   return (
