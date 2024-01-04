@@ -88,7 +88,7 @@ async function login(req, res) {
 async function isUser(req, res) {
   try {
     // console.log(req.cookies);
-    if (req.cookies.userid) {
+    if (req.cookies?.userid) {
       const userid = req.cookies?.userid;
       // console.log(userid);
       const user = await User.find({ id: userid });
