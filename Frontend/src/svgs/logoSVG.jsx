@@ -9,7 +9,7 @@ export function Logo({ size = 40 }) {
     >
       <mask
         id="mask0_39_5"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -26,7 +26,7 @@ export function Logo({ size = 40 }) {
       </g>
       <mask
         id="mask1_39_5"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="75"
         y="0"
