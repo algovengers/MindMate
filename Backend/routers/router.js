@@ -5,7 +5,9 @@ const { userMiddleware } = require("../middlewares/genUserId.js");
 const { signup, login, isUser, logout } = require("../controllers/user.js");
 
 const router = Router();
-
+router.route('/cron').get((req,res)=>{
+    res.status(200).json({"message": "hello"})
+})
 router.route("/chat").get(userMiddleware, connectWithChatBot);
 router.route("/analysis").get(userMiddleware, doAnalysis);
 router.route("/fetchanalysis").get(userMiddleware, getAnalysis);
