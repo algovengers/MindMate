@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
 .homepageContainer {
-  background: #f6f3ef;
-  min-height: 100vh;
+  background-image: linear-gradient(135deg, #f7f3ef 0%, #c0aa99 100%);
+  background-attachment: fixed;
+  /* background-color: #f6f3ef; */
+  min-height: calc(100vh - 70px);
   display: grid;
   grid-template-rows: auto 1fr;
 
@@ -55,7 +57,7 @@
 .leftSection .chatWithUs {
   background-color: #fccb5e;
   /* color: white; */
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   min-height: fit-content;
   max-width: 280px;
   border-radius: 8px;
@@ -83,12 +85,40 @@
   /* box-shadow: -2px 2px 12px 0 rgb(0, 0, 0, 0.1); */
 }
 .aboutUs {
-  background: #e75457;
-  color: white;
+  background-image: linear-gradient(
+    135deg,
+    rgba(168, 8, 67, 0.913) 0%,
+    rgba(122, 12, 5, 0.913) 100%
+  );
+  color: rgb(255, 255, 255);
   padding: 50px;
+  margin: auto;
+  width: 80%;
+  border-radius: 15px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.aboutUs > div {
+  text-align: justify;
+}
+
+.statsBox {
+  background-image: linear-gradient(
+    135deg,
+    rgba(75, 75, 75, 0.2) 0%,
+    rgba(29, 29, 29, 0.3) 100%
+  );
+  padding: 50px;
+  margin: auto;
+  margin-top: 50px;
+  width: 80%;
+  border-radius: 15px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .lato {
-  font-family: "Lato", sans-serif;
+  /* font-family: "Lato", sans-serif; */
 }
 .statsSection {
   display: grid;
@@ -100,7 +130,7 @@
   max-width: 1225px;
   margin: auto;
   margin-top: 20px;
-  gap: 10px;
+  gap: 20px;
 }
 
 .footer {
@@ -128,7 +158,7 @@
     /* max-width: 700px; */
     margin: auto;
     margin-top: 20px;
-    gap: 10px;
+    gap: 20px;
   }
 }
 
@@ -141,7 +171,7 @@
     /* max-width: 700px; */
     margin: auto;
     margin-top: 20px;
-    gap: 10px;
+    gap: 20px;
   }
   .statsSection {
     display: flex;
@@ -182,7 +212,7 @@
 
   .homepageContainer main {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 0 2.5rem;
@@ -191,7 +221,8 @@
   .homepageContainer .leftSection {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 20px;
     height: 50%;
   }
 
@@ -202,6 +233,7 @@
   .leftSection .chatWithUs {
     margin-top: 0;
     flex-shrink: 0;
+    width: 100%;
   }
 
   .homepageContainer .rightSection {
@@ -217,22 +249,29 @@
   }
   .homepageContainer main {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 0 2rem;
   }
 
   .homepageContainer .leftSection {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
   }
 
   .homepageContainer .leftSection h1 {
     font-size: 32px;
+    width: 100%;
   }
 
   .leftSection .chatWithUs {
     margin-top: 0;
     flex-shrink: 0;
+    width: 100%;
+    text-align: left;
   }
 
   .homepageContainer .rightSection {
@@ -246,5 +285,16 @@
 @media only screen and (max-width: 800px) {
   .headerText {
     display: none;
+  }
+  .aboutUs {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .statsBox {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
