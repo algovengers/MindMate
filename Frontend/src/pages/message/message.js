@@ -30,7 +30,7 @@ function Message() {
   }, [chat]);
   useEffect(() => {
     async function fetchData() {
-      const data = await axios.get("http://localhost:8800/chat", {
+      const data = await axios.get(import.meta.env.REACT_APP_API_LINK + "/chat", {
         withCredentials: true,
       });
       setChatId(data.data.chatId);
