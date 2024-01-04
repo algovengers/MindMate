@@ -1,19 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
 .homepageContainer {
   background: #f6f3ef;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
+
+  font-family: "Poppins", sans-serif;
 }
 
 .homepageContainer .logoContainer {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  font-family: 'Inter', sans-serif;
 }
-.text { 
-  font-family: 'Domine', serif;
-  font-weight: 900;
+.text {
+  font-weight: 500;
 }
 
 .homepageContainer header {
@@ -26,16 +28,16 @@
 .homepageContainer > header button {
   font-size: 16px;
   padding: 0.6em 1.2em;
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  background-color: #fffefe;
-  /* box-shadow: inset 0 0 2px 0 rgb(0, 0, 0, 0.7); */
-  font-family: 'Roboto', sans-serif;
+  background-color: transparent;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .homepageContainer > header button:hover {
-  /* box-shadow: inset 0 0 10px 0 rgb(0, 0, 0, 0.2); */
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .homepageContainer main {
@@ -53,7 +55,7 @@
 .leftSection .chatWithUs {
   background-color: #fccb5e;
   /* color: white; */
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   min-height: fit-content;
   max-width: 280px;
   border-radius: 8px;
@@ -80,30 +82,29 @@
   justify-content: center;
   /* box-shadow: -2px 2px 12px 0 rgb(0, 0, 0, 0.1); */
 }
-.aboutUs{
+.aboutUs {
   background: #e75457;
   color: white;
   padding: 50px;
 }
-.lato{
-  font-family: 'Lato', sans-serif;
-
+.lato {
+  font-family: "Lato", sans-serif;
 }
 .statsSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.Articles{
+.Articles {
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   max-width: 1225px;
   margin: auto;
   margin-top: 20px;
   gap: 10px;
 }
 
-.footer{
-  background: #1E1C1B;
+.footer {
+  background: #1e1c1b;
   margin-top: 8rem;
   color: white;
   min-height: 300px;
@@ -121,9 +122,9 @@
     font-size: 50px;
     line-height: 120%;
   }
-  .Articles{
+  .Articles {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     /* max-width: 700px; */
     margin: auto;
     margin-top: 20px;
@@ -131,11 +132,8 @@
   }
 }
 
-
-
 @media only screen and (max-width: 1050px) {
-
-  .Articles{
+  .Articles {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -152,7 +150,6 @@
     margin-bottom: 40px;
   }
 }
-
 
 @media only screen and (max-width: 850px) {
   .homepageContainer .leftSection h1 {
@@ -241,5 +238,13 @@
   .homepageContainer .rightSection {
     order: -1;
     height: 50%;
+  }
+}
+
+/*-----------------------------------------*/
+
+@media only screen and (max-width: 800px) {
+  .headerText {
+    display: none;
   }
 }

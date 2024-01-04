@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Image from "../../svgs/SVG/SVG/FrontImage3.svg";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { LuLogIn, LuLogOut } from "react-icons/lu";
 
 import { useContext, useRef } from "react";
 import LoginContext from "../../context/context";
@@ -26,9 +27,12 @@ function Homepage() {
 
   const logoutUser = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8800/logout", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        process.env.REACT_APP_API_LINK + "/logout",
+        {
+          withCredentials: true,
+        }
+      );
       console.log(data);
       if (data?.msg === "loggedout") {
         logout();
@@ -43,7 +47,7 @@ function Homepage() {
       <header>
         <div className={styles.logoContainer}>
           <Logo />
-          <div>
+          <div className={styles.headerText}>
             <h4 className={styles.text}>MindMate</h4>
             <h6 className={`${styles.text} text-xs`}>
               A mental health chat assistance
@@ -51,7 +55,15 @@ function Homepage() {
           </div>
         </div>
         <div className="flex flex-row gap-4">
-          {loggedIn && <button>Analyse</button>}
+          {loggedIn && (
+            <button
+              onClick={() => {
+                navigate("/analysis");
+              }}
+            >
+              Analyse
+            </button>
+          )}
           <button
             onClick={() => {
               if (!loggedIn) navigate("/login");
@@ -60,7 +72,7 @@ function Homepage() {
               }
             }}
           >
-            {!loggedIn ? "Login" : "Logout"}
+            {!loggedIn ? <LuLogIn /> : <LuLogOut />}
           </button>
         </div>
       </header>
