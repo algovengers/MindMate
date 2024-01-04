@@ -5,10 +5,14 @@ const cron = require('node-cron')
 const {sendWelcomeEmail, sendScheduledEmails} = require('./Controller/email.controller')
 const connectDB = require('./database/ConnectDb')
 
-cron.schedule('31 19 * * *',()=>{
-	//Pick data from Database and send emails to users
-	sendScheduledEmails()
-    console.log("DOne");
+cron.schedule('01 12 * * *',()=>{
+    //Pick data from Database and send emails to users
+    async function sendMails(){
+        await sendScheduledEmails()
+        console.log("DOne");
+
+    }
+    sendMails()
 },{
     timezone : 'Asia/Kolkata'
 })

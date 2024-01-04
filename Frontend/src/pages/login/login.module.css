@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #5efce8 0%, #736efe 100%);
+  background: linear-gradient(135deg, #5efce8 0%, #706cd7d0 100%);
 }
 
 .loginContainer {
@@ -47,4 +47,20 @@
 
 .loginContainer footer span:hover {
   color: #1b1798;
+}
+.googleButton{
+  outline: none;
+  display:  flex;
+  flex-direction: row;
+  background-color: #4384f4;
+  align-items: center;
+  gap: 10px;
+  padding: 2px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.googleImage{
+  height: 33px;
+  background: white;
+  border-radius: 5px;
 }
