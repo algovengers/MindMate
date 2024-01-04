@@ -52,7 +52,20 @@ function Login() {
       return { ...d };
     });
   };
-
+  const handleLoginWithGoogle =  () => {
+    async function loginGoogle(){
+      try {
+        const res = await LoginWithGoogle();
+        if(res){
+          setLoggedIn(true);
+        }
+      } catch (error) {
+        
+      }
+    }
+    loginGoogle();
+    
+  }
   const LoginandSignup = async (e) => {
     try {
       if (isRegistered) {
@@ -213,7 +226,7 @@ function Login() {
               <div
                 className={styles.googleButton}
                 onClick={() => {
-                  LoginWithGoogle();
+                  handleLoginWithGoogle();
                 }}
               >
                 <img src={GoogleIcon} alt="" className={styles.googleImage} />
