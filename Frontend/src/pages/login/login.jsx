@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./login.module.css";
 import InputBox from "../../components/inputBox/inputBox";
 import Button from "../../components/button/button";
-import GoogleIcon from '../../svgs/googleicon.png'
+import GoogleIcon from "../../svgs/googleicon.png";
 import {
   LoginWithEmail,
   LoginWithGoogle,
@@ -18,15 +18,15 @@ function Login() {
     email: "",
     password: "",
   });
-  const [loginError,setLoginError] = useState(false)
-  const [loggedIn,setLoggedIn] = useState(false)
+  const [loginError, setLoginError] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [logging, setLogging] = useState(false);
   const [error, setError] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isRegistered === true) {
@@ -53,23 +53,25 @@ function Login() {
     });
   };
 
-  const LoginandSignup = async(e) => {
-   try {
-     if(isRegistered){
-       const login = await LoginWithEmail(loginData.email,loginData.password)
-       setLogging(false)
-       setLoggedIn(true)
-     }
-     else{
-      const Signup = await SignupWithEmail(loginData.email,loginData.password)
-      setLogging(false)
-      setLoggedIn(true)
-     }
-   } catch (error) {
-    setLoginError(true)
-    setLogging(false)
-   }
-  }
+  const LoginandSignup = async (e) => {
+    try {
+      if (isRegistered) {
+        const login = await LoginWithEmail(loginData.email, loginData.password);
+        setLogging(false);
+        setLoggedIn(true);
+      } else {
+        const Signup = await SignupWithEmail(
+          loginData.email,
+          loginData.password
+        );
+        setLogging(false);
+        setLoggedIn(true);
+      }
+    } catch (error) {
+      setLoginError(true);
+      setLogging(false);
+    }
+  };
   const handleSubmitButton = (e) => {
     e.preventDefault();
     //first check for errors and then only update the error and if the error is empty send a request
@@ -124,17 +126,13 @@ function Login() {
         return { ...prev };
       });
     }
-    setLogging(true)
+    setLogging(true);
     // calling the request
-    LoginandSignup()
-
-
-    
+    LoginandSignup();
   };
-  useEffect(()=>{
-    if(loggedIn)
-    navigate('/message')
-  },[loggedIn])
+  useEffect(() => {
+    if (loggedIn) navigate("/message");
+  }, [loggedIn]);
   useEffect(() => {
     if (Object.keys(error).length === 0) {
       // if (!isRegistered && !isLoading) {
@@ -171,24 +169,11 @@ function Login() {
                 </h2>
               ) : (
                 <h2>
-                  Register a new account <span>👋</span>
+                  Register a New Account <span>👇</span>
                 </h2>
               )}
             </header>
             <main>
-              {!isRegistered && (
-                <InputBox
-                  label="Name"
-                  name="name"
-                  type="text"
-                  value={loginData.name}
-                  handleChange={handleLoginDataChange}
-                  placeholder="Rohit Kumar"
-                  error={error.name}
-                  disabled={isLoading}
-                />
-              )}
-
               <InputBox
                 label="Email"
                 name="email"
@@ -215,27 +200,30 @@ function Login() {
                 text={isRegistered ? "Sign in" : "Sign up"}
                 type="submit"
                 handleClick={handleSubmitButton}
-                logging = {logging}
-                
+                logging={logging}
+                style={{
+                  backgroundColor: isRegistered
+                    ? "rgb(144, 0, 64)"
+                    : "rgb(0, 144, 101)",
+                }}
               />
-              <div className="text-center mt-2 opacity-70" >
-                <span style={{font:`'Inter', sans-serif`}}>OR</span>
+              <div className="text-center mt-2 opacity-70">
+                <span style={{ font: `'Inter', sans-serif` }}>OR</span>
               </div>
-                    <div
-                      className={styles.googleButton}
-                      onClick={() => {
-                        LoginWithGoogle();
-                      }}
-                    >
-                     <img src={GoogleIcon} alt="" className={styles.googleImage} /> 
-                     <div>{isRegistered? 'SignIn ' : 'SignUp '}With Google
-                      </div>
-                    </div>
+              <div
+                className={styles.googleButton}
+                onClick={() => {
+                  LoginWithGoogle();
+                }}
+              >
+                <img src={GoogleIcon} alt="" className={styles.googleImage} />
+                <div>{isRegistered ? "Signin " : "Signup "}With Google</div>
+              </div>
             </main>
             <footer>
               {isRegistered
                 ? `Don't have an account?`
-                : `Already have an account`}{" "}
+                : `Already have an account?`}{" "}
               {
                 <span
                   onClick={() => {
