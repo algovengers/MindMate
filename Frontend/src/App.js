@@ -7,17 +7,21 @@ import { Cookies, useCookies } from "react-cookie";
 import axios from "axios";
 import LoginContext from "./context/context";
 import { PrivateRoute } from "./components/router/PrivateRouter";
-
+import { PrivateRouteAnalysis } from "./components/router/PrivateRouterAnalysis";
 import Analysis from "./pages/analysis/analysis";
+import Error from "./pages/error/error";
 
 function App() {
   const { login } = useContext(LoginContext);
   useEffect(() => {
     async function isUser() {
       try {
-        const user = await axios.get(process.env.REACT_APP_API_LINK + "/isUser", {
-          withCredentials: true,
-        });
+        const user = await axios.get(
+          process.env.REACT_APP_API_LINK + "/isUser",
+          {
+            withCredentials: true,
+          }
+        );
         if (user) {
           console.log("Yes");
           login();
@@ -41,7 +45,19 @@ function App() {
         />
         <Route path="/" element={<Homepage />} />
         <Route path="/message" element={<Message />} />
+<<<<<<< Updated upstream
+        <Route
+          path="/analysis"
+          element={
+            <PrivateRouteAnalysis>
+              <Analysis />
+            </PrivateRouteAnalysis>
+          }
+        />
+=======
         <Route path="/analysis" element={<Analysis />} />
+        <Route path="*"  element = {<Error />} />
+>>>>>>> Stashed changes
       </Routes>
     </BrowserRouter>
   );

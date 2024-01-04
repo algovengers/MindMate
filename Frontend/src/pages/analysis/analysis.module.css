@@ -39,15 +39,16 @@
 .analysisContainer > header button {
   font-size: 16px;
   padding: 0.6em 1.2em;
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   background-color: transparent;
-  box-shadow: inset 0 0 2px 0 rgb(0, 0, 0, 0.7);
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .analysisContainer > header button:hover {
-  box-shadow: inset 0 0 10px 0 rgb(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .analysisContainer main {
@@ -319,3 +320,9 @@
   }
 }
 /*----------------------------*/
+
+@media only screen and (max-width: 800px) {
+  .headerText {
+    display: none;
+  }
+}

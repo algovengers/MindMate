@@ -23,7 +23,6 @@ app.use(
     ],
     credentials: true,
     exposedHeaders: ["set-cookie", "token"],
-
   })
 );
 // parse form data
