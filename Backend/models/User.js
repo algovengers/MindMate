@@ -20,9 +20,6 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  reportId: {
-    type: mongoose.Types.ObjectId,
-  },
 });
 
 module.exports = mongoose.model("User", userSchema);

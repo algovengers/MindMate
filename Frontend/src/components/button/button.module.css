@@ -1,7 +1,7 @@
 .buttonContainer button {
   font-size: var(--body1);
-  background-color: #736efe;
-  color: var(--white);
+  background-color: rgb(57, 57, 57);
+  color: white;
   border: none;
   width: 100%;
   padding: 0.6em 0;
@@ -12,4 +12,15 @@
 
 .buttonContainer button:hover {
   box-shadow: inset -1px 1px 2px 0 rgb(255, 255, 255, 0.4);
+}
+.loggingButtonContainer button {
+  font-size: var(--body1);
+  background-color: #adabff;
+  color: var(--white);
+  border: none;
+  width: 100%;
+  padding: 0.6em 0;
+  border-radius: 50px;
+  box-shadow: -1px 1px 2px 0 rgb(0, 0, 0, 0.4);
+  cursor: pointer;
 }
