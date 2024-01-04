@@ -9,6 +9,7 @@ import LoginContext from "./context/context";
 import { PrivateRoute } from "./components/router/PrivateRouter";
 import { PrivateRouteAnalysis } from "./components/router/PrivateRouterAnalysis";
 import Analysis from "./pages/analysis/analysis";
+import Error from "./pages/error/error";
 
 function App() {
   const { login } = useContext(LoginContext);
@@ -52,6 +53,8 @@ function App() {
             </PrivateRouteAnalysis>
           }
         />
+        <Route path="*"  element = {<Error />} />
+
       </Routes>
     </BrowserRouter>
   );
