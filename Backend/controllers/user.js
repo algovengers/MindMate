@@ -114,6 +114,9 @@ async function logout(req, res) {
   }
   res.cookie("userid", null, {
     maxAge: 0,
+    httpOnly: true,
+    sameSite: "None",
+    secure: true,
   });
   res.status(200).json({ msg: "loggedout" });
 }
