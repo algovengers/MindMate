@@ -70,8 +70,10 @@ async function LoginWithGoogle() {
         { headers, withCredentials: true }
       );
     }
+    return true;
   } catch (error) {
     console.log(error.message);
+    return false;
   }
 }
 async function LoginWithEmail(email, password) {
