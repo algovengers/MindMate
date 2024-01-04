@@ -2,6 +2,7 @@ const {Email} = require('../Email');
 const { getArticles } = require('../Gemini/gemini');
 const { getUsersfromDB,getReportfromDB } = require('../database/db');
 const { makeEmailData } = require('../utils/emailData');
+const { welcomeEmail } = require('../utils/welcomeEmail');
 
 const email = new Email(process.env.SMTP_SERVICE,process.env.SMTP_EMAIL,process.env.SMTP_PASSWORD);
 
@@ -29,12 +30,19 @@ async function sendEmailToClients(req,res){
 async function sendWelcomeEmail(req,res){
     try {
         const emailId = req.body?.emailId
-        const report = req.body.report
-        if(!emailId || !report){
+        const score = req.body.score
+        const analysis =  req.body.analysis
+        const keywords = req.body.keywords
+        if(!emailId || !score || !analysis || !keywords){
             res.sendStatus(400)
             return;
         }
-        const emailSent = await email.sendEmail(emailId,data)
+
+        const articles = await getArticles(keywords)
+
+        
+        const EmailToSend = welcomeEmail(score,analysis,articles)
+        const emailSent = await email.sendEmail(emailId,EmailToSend)
         if(emailSent){
             res.sendStatus(200)
         }
