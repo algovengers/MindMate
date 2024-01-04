@@ -10,15 +10,17 @@ const reportSchema = new mongoose.Schema({
   score: {
     type: Number,
   },
-  keywords: {
-    type: [String],
-  },
+  keywords: [
+    {
+      type: String,
+    },
+  ],
   analysis: {
     type: String,
   },
   timestamp: {
     type: Date,
-    default: Date.now,
+    default: () => Date.now(),
   },
 });
 
