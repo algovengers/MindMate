@@ -2,6 +2,7 @@
 ## A mental health chat assistant
 
 #### Deploy Link : [MindMate](https://mind-mate-wellness.vercel.app/)
+#### Youtube Link : [MindMate Youtube Explanation](https://www.youtube.com/watch?v=fUD5HcZhtQI)
 
 Mindmate is a mental health **AI** powered chat assistant which guides and helps you to improve your mental health.
 Mindmate website provides a user friendly UI to learn about mental health.
@@ -41,6 +42,7 @@ MindMate application runs on 4 server
   - Render
   - Mongo DB
   - Mirma Clouds
+  - Firebase
     
 ## Website Preview
 
