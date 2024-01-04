@@ -2,7 +2,7 @@ import styles from "./analysis.module.css";
 import { Logo } from "../../svgs/logoSVG";
 import { useNavigate } from "react-router-dom";
 import Image from "../../svgs/SVG/SVG/FrontImage3.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Markdown from "react-markdown";
 import { IoArrowBackSharp, IoChevronForward } from "react-icons/io5";
@@ -10,6 +10,8 @@ import { Line } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import "chartjs-adapter-date-fns";
+import LoginContext from "../../context/context";
+import { LuLogIn, LuLogOut } from "react-icons/lu";
 
 Chart.register(CategoryScale);
 
@@ -193,12 +195,16 @@ function Analysis() {
   const [curRep, setCurRep] = useState(null);
   const [analysisHist, setAnalysisHist] = useState([]);
   const [fetchNew, setFetchNew] = useState(false);
+  const { logout, loggedIn } = useContext(LoginContext);
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await axios.get("http://localhost:8800/fetchanalysis", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        process.env.REACT_APP_API_LINK + "/fetchanalysis",
+        {
+          withCredentials: true,
+        }
+      );
 
       setAnalysisHist(data.data);
       setCurState("list");
@@ -210,9 +216,12 @@ function Analysis() {
   async function fetchNewAnalysis() {
     setFetchNew(true);
     try {
-      const { data } = await axios.get("http://localhost:8800/analysis", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        process.env.REACT_APP_API_LINK + "/analysis",
+        {
+          withCredentials: true,
+        }
+      );
       // console.log(data);
       console.log("new analysis");
       // console.log(analysisHist);
@@ -231,23 +240,55 @@ function Analysis() {
     setFetchNew(false);
   }
 
+  const logoutUser = async () => {
+    try {
+      const { data } = await axios.get(
+        process.env.REACT_APP_API_LINK + "/logout",
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(data);
+      if (data?.msg === "loggedout") {
+        logout();
+      }
+    } catch (error) {
+      console.log("Err in logout");
+    }
+  };
+
   return (
     <div className={styles.analysisContainer}>
       <header>
         <div className={styles.logoContainer}>
           <Logo />
-          <div>
+          <div className={styles.headerText}>
             <h4>MindMate</h4>
             <h6>A mental health chat assistance</h6>
           </div>
         </div>
-        {/* <button
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          Login
-        </button> */}
+
+        <div className="flex flex-row gap-4">
+          {loggedIn && (
+            <button
+              onClick={() => {
+                navigate("/message");
+              }}
+            >
+              Chat
+            </button>
+          )}
+          <button
+            onClick={() => {
+              if (!loggedIn) navigate("/login");
+              else {
+                logoutUser();
+              }
+            }}
+          >
+            {!loggedIn ? <LuLogIn /> : <LuLogOut />}
+          </button>
+        </div>
       </header>
       <main style={{ minHeight: "100vh" }}>
         <section className={styles.chartCont}>

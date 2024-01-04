@@ -87,13 +87,13 @@ async function login(req, res) {
 
 async function isUser(req, res) {
   try {
-    console.log(req.cookies);
-    if (req.cookies.userid) {
+    // console.log(req.cookies);
+    if (req.cookies?.userid) {
       const userid = req.cookies?.userid;
-      console.log(userid);
+      // console.log(userid);
       const user = await User.find({ id: userid });
-      console.log(user + "Here");
-      if (user) {
+      // console.log(user, "Here");
+      if (user?.length != 0) {
         res.status(200).json({ message: "User validated" });
       } else {
         res.status(401).json({ error: "Logged Out" });
@@ -119,4 +119,3 @@ async function logout(req, res) {
 }
 
 module.exports = { signup, login, isUser, logout };
-

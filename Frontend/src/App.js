@@ -7,7 +7,7 @@ import { Cookies, useCookies } from "react-cookie";
 import axios from "axios";
 import LoginContext from "./context/context";
 import { PrivateRoute } from "./components/router/PrivateRouter";
-
+import { PrivateRouteAnalysis } from "./components/router/PrivateRouterAnalysis";
 import Analysis from "./pages/analysis/analysis";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function isUser() {
       try {
-        const user = await axios.get(process.env.REACT_APP_API_LINK + "/isUser", {
+        const user = await axios.get("http://localhost:8800/isUser", {
           withCredentials: true,
         });
         if (user) {
@@ -41,7 +41,14 @@ function App() {
         />
         <Route path="/" element={<Homepage />} />
         <Route path="/message" element={<Message />} />
-        <Route path="/analysis" element={<Analysis />} />
+        <Route
+          path="/analysis"
+          element={
+            <PrivateRouteAnalysis>
+              <Analysis />
+            </PrivateRouteAnalysis>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
