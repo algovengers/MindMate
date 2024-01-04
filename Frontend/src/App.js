@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function isUser() {
       try {
-        const user = await axios.get("http://localhost:8800/isUser", {
+        const user = await axios.get(process.env.REACT_APP_API_LINK + "/isUser", {
           withCredentials: true,
         });
         if (user) {

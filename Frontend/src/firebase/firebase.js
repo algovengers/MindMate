@@ -55,7 +55,7 @@ async function LoginWithGoogle() {
       console.log(headers);
 
       const signup = await axios.post(
-        import.meta.env.REACT_APP_API_LINK+"/signup",
+        process.env.REACT_APP_API_LINK+"/signup",
         {},
         { headers,
         withCredentials : true }
@@ -66,7 +66,7 @@ async function LoginWithGoogle() {
       };
       console.log(headers);
       const signup = await axios.post(
-        import.meta.env.REACT_APP_API_LINK+"/login",
+        process.env.REACT_APP_API_LINK+"/login",
         {},
         { headers,
         withCredentials : true }
@@ -99,7 +99,7 @@ async function SignupWithEmail(email, password) {
     // One vulnerability here
     // If signup fails, you might want to handle it appropriately (e.g., show an error message to the user)
     await axios.post(
-      import.meta.env.REACT_APP_API_LINK+"/signup",
+      process.env.REACT_APP_API_LINK+"/signup",
       {},
       {
         headers,
