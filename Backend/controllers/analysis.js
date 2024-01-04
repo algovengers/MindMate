@@ -20,6 +20,11 @@ const doAnalysis = async (req, res) => {
     const userId = req.userId;
     const analysis = await genAnalysis(userId);
 
+    if (analysis?.info === "nodata") {
+      res.status(200).json({ msg: "nochatdata" });
+      return;
+    }
+
     const reportDatas = await Report.create({
       userId: userId,
       keywords: analysis.keywords,
@@ -44,8 +49,7 @@ const genAnalysis = async (userId) => {
       .sort({ timestamp: 1 });
 
     if (foundHist.length === 0) {
-      res.status(400).json({ msg: "Not enough chat history!" });
-      return;
+      return { info: "nodata" };
     }
 
     let foundHistForGemini = [];
@@ -104,4 +108,23 @@ const genAnalysis = async (userId) => {
   }
 };
 
-module.exports = { genAnalysis, doAnalysis };
+const getAnalysis = async (req, res) => {
+  // console.log(req.cookies);
+  try {
+    if (!req.userId) {
+      res.status(401).json({ msg: "UserId not found" });
+      return;
+    }
+    const userId = req.userId;
+
+    const reports = await Report.find({
+      userId: userId,
+    }).sort({ timestamp: -1 });
+
+    res.status(200).json({ data: reports });
+  } catch (error) {
+    res.status(500).json({ msg: "Internal Server Error" });
+  }
+};
+
+module.exports = { genAnalysis, doAnalysis, getAnalysis };
