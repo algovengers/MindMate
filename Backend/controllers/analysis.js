@@ -108,8 +108,6 @@ const genAnalysis = async (userId) => {
   }
 };
 
-
-
 const getAnalysis = async (req, res) => {
   // console.log(req.cookies);
   try {
