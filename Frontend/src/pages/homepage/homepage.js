@@ -110,7 +110,7 @@ function Homepage() {
           support thrive.
         </div>
       </section>
-      <section className="mt-8">
+      <section className={`mt-8 ${styles.statsBox}`}>
         <h1 className="text-center text-4xl font-bold mb-8">
           Mental health Issues are Common
         </h1>
@@ -120,7 +120,7 @@ function Homepage() {
           </div>
           <div className="text-center flex flex-col justify-center gap-4">
             <h2 className="text-2xl">Do You know?</h2>
-            <p className="text-lg">
+            <p className="text-lg text-justify">
               Mental health conditions are not uncommon. Hundreds of millions
               suffer from them yearly, and many more do over their lifetimes.
               It’s estimated that 1 in 3 women and 1 in 5 men will experience
