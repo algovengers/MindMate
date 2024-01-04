@@ -1,27 +1,27 @@
 const { default: mongoose } = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-      },
-      id: {
-        type: String,
-        required: true,
-      },
-      lastmail: {
-        type: Date,
-        default: null,
-      },
-      totalmail: {
-        type: Number,
-        default: 0,
-      },
-      reportId: {
-        type: mongoose.Types.ObjectId,
-      },
-})
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  id: {
+    type: String,
+    required: true,
+  },
+  lastmail: {
+    type: Date,
+    default: ()=>Date.now(),
+  },
+  totalmail: {
+    type: Number,
+    default: 0,
+  },
+  reportId: {
+    type: mongoose.Types.ObjectId,
+  },
+});
 
 
 const reportSchema = new mongoose.Schema({
@@ -40,7 +40,7 @@ const reportSchema = new mongoose.Schema({
       },
       timestamp: {
         type: Date,
-        default: Date.now,
+        default:()=> Date.now,
       },
 })
 const User = new mongoose.model('User',userSchema)
