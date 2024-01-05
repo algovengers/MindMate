@@ -5,7 +5,7 @@ function Error() {
   const navigate =  useNavigate();
   return (
     <div className='h-screen p-4' style={{background : '#f6f3ef'}}>
-        <div className='flex flex-row gap-2'>
+        <div className='flex flex-row gap-2 absolute'>
           <Logo />
           <div>MindMate</div>
         </div>
