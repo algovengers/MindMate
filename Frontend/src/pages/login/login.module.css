@@ -79,3 +79,9 @@
   border-color: black;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px;
 }
+
+@media screen and (max-width: 500px) {
+  .loginContainer {
+    width: calc(100vw - 40px);
+  }
+}
