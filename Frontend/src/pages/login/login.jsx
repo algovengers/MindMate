@@ -20,6 +20,7 @@ function Login() {
     password: "",
   });
   const [loginError, setLoginError] = useState(false);
+  const [errorMessage,setErrorMessage] = useState('')
   const [loggedIn, setLoggedIn] = useState(false);
   const [logging, setLogging] = useState(false);
   const [error, setError] = useState({
@@ -47,6 +48,7 @@ function Login() {
   // const {  } = useContext(userContext);
 
   const handleLoginDataChange = (e, text) => {
+    setLoginError(false)
     const change = e.target.value;
     setLoginData((d) => {
       d[text] = change;
@@ -83,6 +85,7 @@ function Login() {
       }
     } catch (error) {
       setLoginError(true);
+      setErrorMessage(error.message)
       setLogging(false);
     }
   };
@@ -192,7 +195,8 @@ function Login() {
                 error={error.password}
                 placeholder="At least 8 characters"
               />
-
+              {isRegistered && loginError && <span className="text-center">Invalid credentials</span>}
+              {!isRegistered && loginError && <span className="text-center">Error Creating Account</span>}
               <Button
                 text={isRegistered ? "Sign in" : "Sign up"}
                 type="submit"

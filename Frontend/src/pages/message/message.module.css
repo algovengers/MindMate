@@ -132,6 +132,10 @@
   -moz-animation: pulse 2s infinite ease-in-out;
   animation: pulse 2s infinite ease-in-out;
 }
+.headerText{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
 
 @media only screen and (max-width: 650px) {
   .messageContainer header {
