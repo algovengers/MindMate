@@ -260,7 +260,9 @@ function Analysis() {
   return (
     <div className={styles.analysisContainer}>
       <header>
-        <div className={styles.logoContainer}>
+        <div className={styles.logoContainer} onClick={()=>{
+          navigate('/')
+        }}>
           <Logo />
           <div className={styles.headerText}>
             <h4>MindMate</h4>
