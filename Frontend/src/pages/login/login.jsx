@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./login.module.css";
 import InputBox from "../../components/inputBox/inputBox";
 import Button from "../../components/button/button";
@@ -9,6 +9,7 @@ import {
   SignupWithEmail,
 } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import LoginContext from "../../context/context";
 
 function Login() {
   const [isRegistered, setIsRegister] = useState(true);
@@ -27,7 +28,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
-
+  const {login} = useContext(LoginContext)
   useEffect(() => {
     if (isRegistered === true) {
       setError({
@@ -52,7 +53,20 @@ function Login() {
       return { ...d };
     });
   };
-
+  const handleLoginWithGoogle =  () => {
+    async function loginGoogle(){
+      try {
+        const res = await LoginWithGoogle();
+        if(res){
+          setLoggedIn(true);
+        }
+      } catch (error) {
+        
+      }
+    }
+    loginGoogle();
+    
+  }
   const LoginandSignup = async (e) => {
     try {
       if (isRegistered) {
@@ -131,30 +145,13 @@ function Login() {
     LoginandSignup();
   };
   useEffect(() => {
-    if (loggedIn) navigate("/message");
+    
+    if (loggedIn){ 
+      login()
+      navigate("/message")};
   }, [loggedIn]);
   useEffect(() => {
     if (Object.keys(error).length === 0) {
-      // if (!isRegistered && !isLoading) {
-      //   handleSignup(
-      //     loginData.name,
-      //     loginData.email,
-      //     loginData.password,
-      //     handleSetUserToken,
-      //     setIsLoading,
-      //     setUserId
-      //   );
-      // }
-      // if (isRegistered && !isLoading) {
-      //   loginData.name.toLocaleLowerCase();
-      //   handleSignin(
-      //     loginData.email,
-      //     loginData.password,
-      //     setIsLoading,
-      //     handleSetUserToken,
-      //     setUserId
-      //   );
-      // }
     }
   }, [error]);
   return (
@@ -213,7 +210,7 @@ function Login() {
               <div
                 className={styles.googleButton}
                 onClick={() => {
-                  LoginWithGoogle();
+                  handleLoginWithGoogle();
                 }}
               >
                 <img src={GoogleIcon} alt="" className={styles.googleImage} />

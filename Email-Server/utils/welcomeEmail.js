@@ -4,7 +4,7 @@ function welcomeEmail(score, analysis,articles){
 const email =  `
 <html>
     Hi,
-    Thank you for Joining <b>Mind Mate </b>.
+    Thank you for Analysing your Mental Health on <b>Mind Mate </b>.
     We hope you are doing better than before.
     Here is your Mental health report: 
         Score  : ${score} <br/>

@@ -183,7 +183,7 @@ function Homepage() {
               <div>Youtube</div>
             </div>
           </div>
-          <div>© 2024 by Algovengers</div>
+          <div className="text-center">© 2024 by Algovengers</div>
         </div>
       </footer>
     </div>

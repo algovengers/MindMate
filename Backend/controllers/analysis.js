@@ -31,7 +31,17 @@ const doAnalysis = async (req, res) => {
       analysis: analysis.report,
       score: analysis.score,
     });
-
+    try {
+      const user = await User.findOne({id : userId})
+      axios.post('https://mindmate-email-api.onrender.com/welcomeEmail',{
+      "emailId" : user.email,
+      "score" : analysis.score,
+      "analysis"  : analysis.report,
+      "keywords" : analysis.keywords
+  })
+    } catch (error) {
+      console.log("error sending the message");
+    }
     res.status(200).json({ data: reportDatas });
   } catch (error) {
     res.status(500).json({ msg: "Internal Server Error" });
