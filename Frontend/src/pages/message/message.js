@@ -55,9 +55,7 @@ function Message() {
   useEffect(() => {
     if (chatId !== null) {
       //make a websocket connection here
-      let wss = new WebSocket(
-        `wss://api.mirna.cloud/greencat437/romero?id=${chatId}`
-      );
+      let wss = new WebSocket(`wss://mindmate-ws.onrender.com?id=${chatId}`);
       wss.addEventListener("open", () => {
         console.log("Websocket connected");
         ws.current.send(JSON.stringify({ type: "client:connected" }));
