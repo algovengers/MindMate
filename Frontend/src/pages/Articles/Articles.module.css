@@ -55,12 +55,12 @@
 @media only screen and (width<440px) {
   .container {
     height: 460px;
-    width: 350px;
+    width: calc(100% - 40px);
   }
 }
 @media only screen and (width<440px) {
   .container {
     height: 420px;
-    width: 300px;
+    width: calc(100% - 40px);
   }
 }

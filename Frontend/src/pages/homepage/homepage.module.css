@@ -277,6 +277,7 @@
   .homepageContainer .rightSection {
     order: -1;
     height: 50%;
+    width: 100%;
   }
 }
 
@@ -296,5 +297,6 @@
     width: auto;
     margin-left: 20px;
     margin-right: 20px;
+    padding: 10px;
   }
 }

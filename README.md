@@ -4,6 +4,10 @@
 #### Deploy Link : [MindMate](https://mind-mate-wellness.vercel.app/)
 #### Youtube Link : [MindMate Youtube Explanation](https://www.youtube.com/watch?v=fUD5HcZhtQI)
 
+#### Our project MindMate got **1st Position** 😀 in it 👇️
+#### Devfolio Link : [MindMate Hackathon Project Link](https://devfolio.co/projects/mind-mate-a-mental-health-chat-assistant-1b96)
+
+
 Mindmate is a mental health **AI** powered chat assistant which guides and helps you to improve your mental health.
 Mindmate website provides a user friendly UI to learn about mental health.
 

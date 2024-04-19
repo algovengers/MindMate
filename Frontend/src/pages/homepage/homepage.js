@@ -174,13 +174,34 @@ function Homepage() {
         <div className="m-auto h-full" style={{ maxWidth: "1320px" }}>
           <div className="grid grid-cols-2 h-5/6">
             <div className="flex flex-col justify-center items-center gap-3 text-lg">
-              <div onClick={aboutClick}>About</div>
-              <div onClick={articlesClick}>Articles</div>
-              <div>Chat</div>
+              <div onClick={aboutClick} className="cursor-pointer">
+                About
+              </div>
+              <div onClick={articlesClick} className="cursor-pointer">
+                Articles
+              </div>
+              <div
+                onClick={() => {
+                  navigate("/message");
+                }}
+                className="cursor-pointer"
+              >
+                Chat
+              </div>
             </div>
             <div className="flex flex-col justify-center items-center gap-3 text-lg">
-              <div>Contribute</div>
-              <div>Youtube</div>
+              <a
+                href="https://github.com/subharthihazra/MindMate"
+                className=" text-white"
+              >
+                <div>Github</div>
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=fUD5HcZhtQI"
+                className=" text-white"
+              >
+                <div>Youtube</div>
+              </a>
             </div>
           </div>
           <div className="text-center">© 2024 by Algovengers</div>

@@ -44,11 +44,15 @@ function Message() {
   }, [chat]);
   useEffect(() => {
     async function fetchData() {
-      const data = await axios.get(process.env.REACT_APP_API_LINK + "/chat", {
-        withCredentials: true,
-      });
-      setChatId(data.data.chatId);
-      console.log(data);
+      try {
+        const data = await axios.get(process.env.REACT_APP_API_LINK + "/chat", {
+          withCredentials: true,
+        });
+        setChatId(data.data.chatId);
+        console.log(data);
+      } catch (error) {
+        console.log("Error Fetching Data");
+      }
     }
     fetchData();
   }, []);
@@ -167,7 +171,9 @@ function Message() {
   return (
     <div className={styles.messageContainer}>
       <header>
-        <div className={styles.logoContainer}>
+        <div className={styles.logoContainer} onClick={()=>{
+          navigate('/')
+        }}>
           <Logo />
           <div className={styles.headerText}>
             <h4>MindMate</h4>
