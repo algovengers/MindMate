@@ -65,7 +65,7 @@ MindMate application runs on 4 server
 ### Create Connection amongst Servers
   - Put Url for Websocketserver in Backend .env (ex- ```WEBSOCKET_SERVER=ws://localhost:8802```)
   - Put Url for Backend and Websocketserver in Frontend .env (ex- ```REACT_APP_API_LINK=http://localhost:8800``` and ```REACT_APP_WS_LINK=ws://localhost:8802```)
-### Scripts to Install
+### Scripts to Install and Run
   1. Need to have ```Node.js``` installed
   2. Go to Backend, Frontend, Websockerserver folder seperately and run for each ```npm install```
   3. Run Backend by, ```npm run dev``` or ```npm start```
