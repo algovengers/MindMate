@@ -5,6 +5,86 @@ const { v4: uuid } = require("uuid");
 const User = require("../models/User");
 const { decodeAuthToken } = require("../firebase/auth");
 
+async function signinwithGoogle(req,res){
+  try {
+    const token = req.headers.token
+    const email = await decodeAuthToken(token)
+    console.log(email);
+    if (!email) {
+      res.status(401).json({ message: "Invalid Access Token" });
+      return;
+    }
+    const data = await user.findOne({ email: email });
+    if(req.cookies?.userid){
+      //chat already done
+      if(!data){
+        //user not created yet
+      const uuid = req.cookies.userid;
+
+      //create user account
+      const user = await User.create({
+        id: uuid,
+        email: email,
+      });
+
+      res.status(200).json({ data: user });
+      }
+      else{
+        //user already created
+        const data = await user.findOne({ email: email });
+
+    if (data?.id) {
+      res.cookie("userid", data.id, {
+        maxAge: 1209600000, //14 * 24 * 60 * 60 * 1000 -> 14days
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+      });
+    }
+
+    res.status(200).json({ data: data });
+      }
+    }
+    else{
+      if(!data){
+        //user not created yet
+        const userId = uuid();
+
+        //check this if cookie is being set or not
+  
+        res.cookie("userid", userId, {
+          maxAge: 1209600000, //14 * 24 * 60 * 60 * 1000 -> 14days
+          httpOnly: true,
+          sameSite: "None",
+          secure: true,
+        });
+  
+        const user = await User.create({
+          id: userId,
+          email: email,
+        });
+        res.status(200).json({ data: user });
+      }
+      else{
+        //user already created
+        const user = await User.findOne({ email: email });
+
+        if (user?.id) {
+          res.cookie("userid", user.id, {
+            maxAge: 1209600000, //14 * 24 * 60 * 60 * 1000 -> 14days
+            httpOnly: true,
+            sameSite: "None",
+            secure: true,
+          });
+        }
+    
+        res.status(200).json({ data: user });
+      }
+    }
+  } catch (error) {
+    res.status(401).json({ message: "Invalid Access Token" });
+  }
+}
 async function signup(req, res) {
   try {
     const token = req.headers.token;
@@ -121,4 +201,4 @@ async function logout(req, res) {
   res.status(200).json({ msg: "loggedout" });
 }
 
-module.exports = { signup, login, isUser, logout };
+module.exports = { signup, login, isUser, logout,signinwithGoogle };
