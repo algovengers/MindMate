@@ -54,8 +54,10 @@ MindMate application runs on 4 server
   3. Go to Authentication -> Sign-in Method
   4. Enable Email/Password, Gmail as Provider
   5. Go to the Project Settings of Web App and get your ```firebaseConfig``` object
-  6. Create ```.env``` in both Backend and Frontend Folders and add ```firebaseConfig``` as per ```.env.sample``` files respectively
-  7. Fill all ```.env``` as per ```.env.sample``` files
+  6. Create ```.env``` in Frontend folder and add ```firebaseConfig``` as per ```.env.sample``` file
+  7. In service accounts section, Generate ```new private key``` (json object).
+  6. Create ```.env``` in Backend folder and add ```new private key``` as per ```.env.sample``` file
+  8. Fill rest ```.env``` as per ```.env.sample``` files
 ### Gemini Setup
   - Get your Gemini (by Google) ```API_KEY``` from (https://ai.google.dev) and put in Backend ```.env``` as per ```.env.sample```
 ### MongoDB Setup
