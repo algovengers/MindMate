@@ -12,15 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://127.0.0.1:5500",
-      "http://localhost:5500",
-      "http://localhost:3000",
-      "https://mind-mate-wellness.vercel.app/",
-      "https://mind-mate-wellness.vercel.app",
-      "http://mind-mate-wellness.vercel.app/",
-      "http://mind-mate-wellness.vercel.app",
-    ],
+    origin: true,
     credentials: true,
     exposedHeaders: ["set-cookie", "token"],
   })
