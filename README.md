@@ -8,16 +8,16 @@
 #### Devfolio Link : [MindMate Hackathon Project Link](https://devfolio.co/projects/mind-mate-a-mental-health-chat-assistant-1b96)
 
 
-Mindmate is a mental health **AI** powered chat assistant which guides and helps you to improve your mental health.
-Mindmate website provides a user friendly UI to learn about mental health.
+Mindmate is a mental health **AI** powered chat assistant that guides and helps you to improve your mental health.
+Mindmate website provides a user-friendly UI to learn about mental health.
 
 ## Features
 
-- AI chat assistant to take guidance about mental health
-- Analyse your mental health over the period of time
-- Get Indication about your mental health condition with graphical visualisation
-- Editor's compiled articles to read and educate about mental health problems
-- Get Email time to time with suggestion to improve your mental health
+- AI chat assistant to take guidance about mental health.
+- Analyse your mental health over a period of time.
+- Get an Indication about your mental health condition with a graphical visualization.
+- Editor's compiled articles to read and educate about mental health problems.
+- Get emails from time to time with suggestions to improve your mental health.
 
 
 
@@ -49,13 +49,13 @@ MindMate application runs on 4 server
  
 ## How to Setup Locally?
 ### Firebase Setup
-  1. Setup a new firebase project
+  1. Setup a new Firebase project
   2. Add a Web App
   3. Go to Authentication -> Sign-in Method
   4. Enable Email/Password, Gmail as Provider
   5. Go to the Project Settings of Web App and get your ```firebaseConfig``` object
   6. Create ```.env``` in Frontend folder and add ```firebaseConfig``` as per ```.env.sample``` file
-  7. In service accounts section, Generate ```new private key``` (json object).
+  7. In the service accounts section, Generate ```new private key``` (json object).
   6. Create ```.env``` in Backend folder and add ```new private key``` as per ```.env.sample``` file
   8. Fill rest ```.env``` as per ```.env.sample``` files
 ### Gemini Setup
@@ -67,7 +67,7 @@ MindMate application runs on 4 server
   - Put Url for Backend and Websocketserver in Frontend .env (ex- ```REACT_APP_API_LINK=http://localhost:8800``` and ```REACT_APP_WS_LINK=ws://localhost:8802```)
 ### Scripts to Install and Run
   1. Need to have ```Node.js``` installed
-  2. Go to Backend, Frontend, Websockerserver folder seperately and run for each ```npm install```
+  2. Go to the Backend, Frontend, Websockerserver folder seperately and run for each ```npm install```
   3. Run Backend by, ```npm run dev``` or ```npm start```
   4. Run Frontend by, ```npm start```
   5. Run Websocketserver by, ```node index.js```
