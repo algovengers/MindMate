@@ -65,11 +65,30 @@
   margin-top: 4rem;
   cursor: text;
   box-shadow: -0px 0px 8px 0 rgb(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.leftSection .chatWithUs:hover{
+  cursor: pointer;
+  background-color: #fbbf4e; /* Change background color on hover */
+  box-shadow: 0px 4px 12px 0 rgba(0, 0, 0, 0.3); /* Change box shadow on hover */
+}
 .chatWithUs .cursor {
   border: 1px solid rgb(0, 0, 0, 0.5);
-  margin-left: 2px;
+  margin-left: 4px;
+  animation: blink-cursor-animation 1s infinite ease;
+}
+
+@keyframes blink-cursor-animation {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 /* add keyframes to animate the cursor */
