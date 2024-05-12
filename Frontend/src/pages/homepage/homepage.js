@@ -10,9 +10,10 @@ import { useContext, useRef } from "react";
 import LoginContext from "../../context/context";
 import Articles from "../Articles/Articles";
 import piechart from "../../svgs/piechart.png";
-
+import TypingText from "../../components/typingText/TypingText";
 function Homepage() {
   const navigate = useNavigate();
+  
   const { logout, loggedIn } = useContext(LoginContext);
 
   const about = useRef(null);
@@ -88,7 +89,7 @@ function Homepage() {
               navigate("/message");
             }}
           >
-            chat with us...<span className={styles.cursor}></span>
+            <TypingText  text={'chat with us...'}/><span className={styles.cursor}></span>
           </div>
         </section>
         <section className={styles.rightSection}>
