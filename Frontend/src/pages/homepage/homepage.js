@@ -42,6 +42,13 @@ function Homepage() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <div className={styles.homepageContainer}>
       <header>
@@ -207,6 +214,9 @@ function Homepage() {
           <div className="text-center">© 2024 by Algovengers</div>
         </div>
       </footer>
+      <button className={styles.scrollButton} onClick={scrollToTop}>
+        &#9650;
+      </button>
     </div>
   );
 }
