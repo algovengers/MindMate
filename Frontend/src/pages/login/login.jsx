@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./login.module.css";
 import InputBox from "../../components/inputBox/inputBox";
 import Button from "../../components/button/button";
@@ -54,6 +56,7 @@ function Login() {
       d[text] = change;
       return { ...d };
     });
+    console.log(loginData)
   };
   const handleLoginWithGoogle =  () => {
     async function loginGoogle(){
@@ -85,6 +88,17 @@ function Login() {
       }
     } catch (error) {
       setLoginError(true);
+      if(isRegistered)
+      toast.error("Invalid credentials", {
+        position: "top-right"
+      });
+      else{
+       
+      toast.error("Error creating account", {
+        position: "top-right"
+      });
+      }
+      //return;
       setErrorMessage(error.message)
       setLogging(false);
     }
@@ -94,55 +108,43 @@ function Login() {
     //first check for errors and then only update the error and if the error is empty send a request
 
     if (!isRegistered) {
-      if (loginData.name === "") {
-        setError((prev) => {
-          return { ...prev, name: "please Enter a name" };
+      if (loginData.email==="" || loginData.password==="") {
+        toast.error("Please enter all the fields", {
+          position: "top-right"
         });
-      } else {
-        setError((prev) => {
-          delete prev.name;
-          return { ...prev };
-        });
+        return ;
       }
+     
     }
 
-    if (loginData.email === "") {
-      setError((prev) => {
-        return { ...prev, email: "please enter an email" };
+    if (isRegistered && (loginData.email==="" || loginData.password==="")) {
+      toast.error("Please enter all the fields", {
+        position: "top-right"
       });
-    } else {
+      return;
+    }
+    else {
       const isCorrectMail = loginData.email
         .toLowerCase()
         .match(
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
-
-      if (!isCorrectMail) {
-        setError((prev) => {
-          return { ...prev, email: "please enter a correct email" };
-        });
-      } else {
-        setError((prev) => {
-          delete prev.email;
-          return { ...prev };
-        });
-      }
+        if (!isCorrectMail) {
+          toast.error("please enter a correct email", {
+            position: "top-right"
+          });
+          return;
+        }
+        else if (!isRegistered && loginData.password.length < 8) {
+          toast.error("please enter a longer password", {
+            position: "top-right"
+          });
+          return;
+        } 
+      
     }
 
-    if (loginData.password === "") {
-      setError((prev) => {
-        return { ...prev, password: "please enter a password" };
-      });
-    } else if (loginData.password.length < 8) {
-      setError((prev) => {
-        return { ...prev, password: "please enter a longer password" };
-      });
-    } else {
-      setError((prev) => {
-        delete prev.password;
-        return { ...prev };
-      });
-    }
+    
     setLogging(true);
     // calling the request
     LoginandSignup();
@@ -159,6 +161,7 @@ function Login() {
   }, [error]);
   return (
     <div className={styles.pageContainer}>
+      <ToastContainer />
       <div className={styles.pageContent}>
         <div className={styles.leftContainer}>
           <div className={styles.loginContainer} onSubmit={handleSubmitButton}>
@@ -181,7 +184,7 @@ function Login() {
                 disabled={isLoading}
                 value={loginData.email}
                 handleChange={handleLoginDataChange}
-                error={error.email}
+               
                 placeholder="example@email.com"
               />
 
@@ -192,11 +195,10 @@ function Login() {
                 disabled={isLoading}
                 value={loginData.password}
                 handleChange={handleLoginDataChange}
-                error={error.password}
+               
                 placeholder="At least 8 characters"
               />
-              {isRegistered && loginError && <span className="text-center">Invalid credentials</span>}
-              {!isRegistered && loginError && <span className="text-center">Error Creating Account</span>}
+             
               <Button
                 text={isRegistered ? "Sign in" : "Sign up"}
                 type="submit"
