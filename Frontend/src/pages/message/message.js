@@ -3,7 +3,7 @@ import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../../svgs/logoSVG";
 import styles from "./message.module.css";
-import { useCallback, useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import axios from "axios";
 import Markdown from "react-markdown";
 import LoginContext from "../../context/context";
@@ -132,7 +132,7 @@ function Message() {
   }, [chatId]);
 
   const handleClick = () => {
-    // console.log(message)
+   
     setChat((prevchat) => [...prevchat, { message, own: true }]);
     if (ws.current) {
       ws.current.send(JSON.stringify({ type: "client:prompt", prompt: message }));
@@ -308,7 +308,7 @@ function Message() {
           <button
             type="submit"
             onClick={() => { handleClick(); }}
-            // disabled={chatState === "busy" ? true : false}
+            disabled={chatState === "busy" ? true : false}
           >
             <span className="material-symbols-outlined">send</span>
           </button>
