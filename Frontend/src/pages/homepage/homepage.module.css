@@ -159,6 +159,29 @@
   min-height: 300px;
 }
 
+.scrollButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.scrollButton:hover {
+  background-color: #0056b3;
+}
+
 @media only screen and (max-width: 1350px) {
   .homepageContainer .rightSection {
     height: 60%;
