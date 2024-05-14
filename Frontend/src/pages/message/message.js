@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../../logoSVG";
+import { Logo } from "../../svgs/logoSVG";
 import styles from "./message.module.css";
 import axios from "axios";
 import Markdown from "react-markdown";
