@@ -5,7 +5,6 @@ import Image from "../../svgs/SVG/SVG/FrontImage3.svg";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { LuLogIn, LuLogOut } from "react-icons/lu";
-
 import { useContext, useRef } from "react";
 import LoginContext from "../../context/context";
 import Articles from "../Articles/Articles";
@@ -40,6 +39,13 @@ function Homepage() {
     } catch (error) {
       console.log("Err in logout");
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
 
   return (
@@ -207,6 +213,9 @@ function Homepage() {
           <div className="text-center">© 2024 by Algovengers</div>
         </div>
       </footer>
+      <button className={styles.scrollButton} onClick={scrollToTop}>
+        &#9650;
+      </button>
     </div>
   );
 }

@@ -220,7 +220,7 @@ function Login() {
                 }}
               >
                 <img src={GoogleIcon} alt="" className={styles.googleImage} />
-                <div>{isRegistered ? "Signin " : "Signup "}With Google</div>
+                <div>{isRegistered ? "Sign in " : "Sign up "}with Google</div>
               </div>
             </main>
             <footer>
