@@ -7,3 +7,19 @@
   box-sizing: border-box;
   /* font-family: 'Libre Baskerville', serif; */
 }
+
+::-webkit-scrollbar
+{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track
+{ 
+  background-color: rgb(230 230 230);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: rgb(120 130 140);
+  height: 5px;
+}
