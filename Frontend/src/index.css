@@ -15,11 +15,11 @@
 
 ::-webkit-scrollbar-track
 { 
-  background-color: rgb(254 243 199);
+  background-color: rgb(230 230 230);
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background-color: rgb(133 77 14);
+  background-color: rgb(120 130 140);
   height: 5px;
 }
