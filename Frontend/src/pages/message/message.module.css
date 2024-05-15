@@ -81,6 +81,8 @@
   font-size: 32px;
 }
 
+
+
 .messageContainer main {
   width: 80%;
   overflow: auto;
@@ -135,6 +137,19 @@
 .headerText{
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.microphoneButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.listening {
+  background-color: red; 
+  border-radius: 50%; 
+  padding: 0.5rem; 
 }
 
 @media only screen and (max-width: 650px) {
