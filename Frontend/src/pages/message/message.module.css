@@ -2,7 +2,6 @@
 
 .messageContainer {
   height: 100vh;
-  /* background-image: linear-gradient(135deg, #f7f3ef 0%, #c0aa99 100%); */
   background-image: linear-gradient(-45deg, #93a5cf 0%, #e4efe9 100%);
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -52,6 +51,7 @@
   background-color: white;
   display: flex;
   align-items: center;
+  gap: 0.5rem; 
 }
 
 .messageContainer > footer input {
@@ -132,9 +132,25 @@
   -moz-animation: pulse 2s infinite ease-in-out;
   animation: pulse 2s infinite ease-in-out;
 }
-.headerText{
+
+.headerText {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.microphoneButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: green; 
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: background-color 0.3s; 
+}
+
+.listening {
+  background-color: red; 
 }
 
 @media only screen and (max-width: 650px) {
@@ -228,8 +244,7 @@
   4.9% {
     top: 36px;
     left: 36px;
-    width: 0;
-    height: 0;
+    width: 0;height: 0;
     opacity: 0;
   }
   5% {
