@@ -78,7 +78,7 @@ function Homepage() {
               }
             }}
           >
-            {!loggedIn ? <LuLogIn /> : <LuLogOut />}
+            {!loggedIn ? <span className="flex items-center gap-2">Login <LuLogIn/></span> : <span className="flex items-center gap-2">Logout <LuLogOut/></span>}
           </button>
         </div>
       </header>
