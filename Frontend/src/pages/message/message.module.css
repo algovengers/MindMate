@@ -270,3 +270,25 @@
 .emptyChat {
   text-align: center;
 }
+.copyButton {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.copyButton:focus {
+  outline: none;
+}
+
+.copyButton:hover {
+  color: #0056b3;
+}
+
+.own .copyButton {
+  display: none; /* Hide the copy button for user messages */
+}
+

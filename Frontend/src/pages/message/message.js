@@ -7,15 +7,7 @@ import axios from "axios";
 import Markdown from "react-markdown";
 import LoginContext from "../../context/context";
 import { LuLogIn, LuLogOut } from "react-icons/lu";
-
-function Chat({ text, own, isLoading = false }) {
-  return (
-    <div className={`${styles.chat} ${own && styles.own}`}>
-      <Markdown>{text}</Markdown>
-      {isLoading && <div className={styles.loadCursor}></div>}
-    </div>
-  );
-}
+import Chat from "./Chat";
 
 function LoaderRipple() {
   return (
