@@ -1,6 +1,6 @@
 import styles from "./homepage.module.css";
 import { Logo } from "../../svgs/logoSVG";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Image from "../../svgs/SVG/SVG/FrontImage3.svg";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -44,7 +44,7 @@ function Homepage() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -78,7 +78,15 @@ function Homepage() {
               }
             }}
           >
-            {!loggedIn ? <span className="flex items-center gap-2">Login <LuLogIn/></span> : <span className="flex items-center gap-2">Logout <LuLogOut/></span>}
+            {!loggedIn ? (
+              <span className="flex items-center gap-2">
+                Login <LuLogIn />
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                Logout <LuLogOut />
+              </span>
+            )}
           </button>
         </div>
       </header>
@@ -115,6 +123,7 @@ function Homepage() {
           you on your journey. Let's build a space where understanding and
           support thrive.
         </div>
+        <Link to={"/aboutus"}>Read More....</Link>
       </section>
       <section className={`mt-8 ${styles.statsBox}`}>
         <h1 className="text-center text-4xl font-bold mb-8">
@@ -181,7 +190,7 @@ function Homepage() {
           <div className="grid grid-cols-2 h-5/6">
             <div className="flex flex-col justify-center items-center gap-3 text-lg">
               <div onClick={aboutClick} className="cursor-pointer">
-                About
+                <Link to={"/aboutus"}> About</Link>
               </div>
               <div onClick={articlesClick} className="cursor-pointer">
                 Articles
