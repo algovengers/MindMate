@@ -56,7 +56,6 @@ function Login() {
       d[text] = change;
       return { ...d };
     });
-    console.log(loginData)
   };
   const handleLoginWithGoogle =  () => {
     async function loginGoogle(){
