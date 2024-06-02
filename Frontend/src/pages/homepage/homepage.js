@@ -207,12 +207,14 @@ function Homepage() {
             <div className="flex flex-col justify-center items-center gap-3 text-lg">
               <a
                 href="https://github.com/subharthihazra/MindMate"
+                target="_blank"
                 className=" text-white"
               >
                 <div>Github</div>
               </a>
               <a
                 href="https://www.youtube.com/watch?v=fUD5HcZhtQI"
+                target="_blank"
                 className=" text-white"
               >
                 <div>Youtube</div>
