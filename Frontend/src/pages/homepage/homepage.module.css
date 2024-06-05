@@ -154,6 +154,9 @@
 }
 
 .footer {
+  
+  padding: 4rem;
+  margin-bottom: 0rem;
   background: #1e1c1b;
   margin-top: 8rem;
   color: white;
