@@ -321,6 +321,13 @@
     height: 50%;
     width: 100%;
   }
+
+  .aboutUs {
+    width: auto;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 2rem;
+  }
 }
 
 /*-----------------------------------------*/

@@ -114,7 +114,9 @@ function Homepage() {
         className={`flex flex-col items-center gap-2 mb-4 ${styles.aboutUs}`}
       >
         <h1 className={`text-4xl font-bold mb-4 ${styles.lato}`}>About Us</h1>
-        <div className={`text-center text-lg ${styles.lato}`}>
+        <div
+          className={` text-start md:text-center text-base md:text-lg ${styles.lato}`}
+        >
           Welcome to our mental health chat assistant platform. We are here for
           you – a supportive community where our empathetic AI actively listens,
           offers encouragement, and provides valuable resources. Together, we
