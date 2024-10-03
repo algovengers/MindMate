@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
@@ -47,17 +48,17 @@ async function LoginWithGoogle() {
     //  //from here we will send data to backend to store the email
     // const info = getAdditionalUserInfo(data).isNewUser; //If this is true we will send the mail along with uid of firebase and uuid of chat
     //  // If this is false we will just user the access token...
-      const headers = {
-        token: "Bearer " + user.accessToken,
-      };
-      console.log(headers);
+    const headers = {
+      token: "Bearer " + user.accessToken,
+    };
+    console.log(headers);
 
-      const signup = await axios.post(
-        process.env.REACT_APP_API_LINK + "/signupWithGoogle",
-        {},
-        { headers, withCredentials: true }
-      );
-  
+    const signup = await axios.post(
+      process.env.REACT_APP_API_LINK + "/signupWithGoogle",
+      {},
+      { headers, withCredentials: true }
+    );
+
     return true;
   } catch (error) {
     console.log(error.message);

@@ -9,7 +9,7 @@ import { useContext, useRef } from "react";
 import LoginContext from "../../context/context";
 import Articles from "../Articles/Articles";
 import piechart from "../../svgs/piechart.png";
-
+import Preloader from "../Preloader/Preloader";
 function Homepage() {
   const navigate = useNavigate();
   const { logout, loggedIn } = useContext(LoginContext);
@@ -126,14 +126,14 @@ function Homepage() {
         <Link to={"/aboutus"}>Read More....</Link>
       </section>
       <section className={`mt-8 ${styles.statsBox}`}>
-        <h1 className="text-center text-4xl font-bold mb-8">
+        <h1 className="mb-8 text-4xl font-bold text-center">
           Mental health Issues are Common
         </h1>
         <div className={styles.statsSection}>
           <div>
             <img src={piechart} alt="" />
           </div>
-          <div className="text-center flex flex-col justify-center gap-4">
+          <div className="flex flex-col justify-center gap-4 text-center">
             <h2 className="text-2xl">Do You know?</h2>
             <p className="text-lg text-justify">
               Mental health conditions are not uncommon. Hundreds of millions
@@ -147,7 +147,7 @@ function Homepage() {
         </div>
       </section>
       <section className="mt-8" ref={articles}>
-        <h1 className="text-center text-3xl font-bold">Editor's Pick</h1>
+        <h1 className="text-3xl font-bold text-center">Editor's Pick</h1>
         <div className="xl:m-auto">
           <div className={styles.Articles}>
             <Articles
@@ -186,9 +186,9 @@ function Homepage() {
         </div>
       </section>
       <footer className={styles.footer}>
-        <div className="m-auto h-full" style={{ maxWidth: "1320px" }}>
+        <div className="h-full m-auto" style={{ maxWidth: "1320px" }}>
           <div className="grid grid-cols-2 h-5/6">
-            <div className="flex flex-col justify-center items-center gap-3 text-lg">
+            <div className="flex flex-col items-center justify-center gap-3 text-lg">
               <div onClick={aboutClick} className="cursor-pointer">
                 <Link to={"/aboutus"}> About</Link>
               </div>
@@ -204,18 +204,18 @@ function Homepage() {
                 Chat
               </div>
             </div>
-            <div className="flex flex-col justify-center items-center gap-3 text-lg">
+            <div className="flex flex-col items-center justify-center gap-3 text-lg">
               <a
                 href="https://github.com/subharthihazra/MindMate"
                 target="_blank"
-                className=" text-white"
+                className="text-white "
               >
                 <div>Github</div>
               </a>
               <a
                 href="https://www.youtube.com/watch?v=fUD5HcZhtQI"
                 target="_blank"
-                className=" text-white"
+                className="text-white "
               >
                 <div>Youtube</div>
               </a>
