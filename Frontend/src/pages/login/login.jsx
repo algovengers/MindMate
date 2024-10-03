@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./login.module.css";
 import InputBox from "../../components/inputBox/inputBox";
 import Button from "../../components/button/button";
 import GoogleIcon from "../../svgs/googleicon.png";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Import icons
+
 import {
   LoginWithEmail,
   LoginWithGoogle,
@@ -21,8 +23,10 @@ function Login() {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+
   const [loginError, setLoginError] = useState(false);
-  const [errorMessage,setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [logging, setLogging] = useState(false);
   const [error, setError] = useState({
@@ -31,7 +35,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
-  const {login} = useContext(LoginContext)
+  const { login } = useContext(LoginContext);
   useEffect(() => {
     if (isRegistered === true) {
       setError({
@@ -50,27 +54,24 @@ function Login() {
   // const {  } = useContext(userContext);
 
   const handleLoginDataChange = (e, text) => {
-    setLoginError(false)
+    setLoginError(false);
     const change = e.target.value;
     setLoginData((d) => {
       d[text] = change;
       return { ...d };
     });
   };
-  const handleLoginWithGoogle =  () => {
-    async function loginGoogle(){
+  const handleLoginWithGoogle = () => {
+    async function loginGoogle() {
       try {
         const res = await LoginWithGoogle();
-        if(res){
+        if (res) {
           setLoggedIn(true);
         }
-      } catch (error) {
-        
-      }
+      } catch (error) {}
     }
     loginGoogle();
-    
-  }
+  };
   const LoginandSignup = async (e) => {
     try {
       if (isRegistered) {
@@ -87,18 +88,17 @@ function Login() {
       }
     } catch (error) {
       setLoginError(true);
-      if(isRegistered)
-      toast.error("Invalid credentials", {
-        position: "top-right"
-      });
-      else{
-       
-      toast.error("Error creating account", {
-        position: "top-right"
-      });
+      if (isRegistered)
+        toast.error("Invalid credentials", {
+          position: "top-right",
+        });
+      else {
+        toast.error("Error creating account", {
+          position: "top-right",
+        });
       }
       //return;
-      setErrorMessage(error.message)
+      setErrorMessage(error.message);
       setLogging(false);
     }
   };
@@ -107,52 +107,47 @@ function Login() {
     //first check for errors and then only update the error and if the error is empty send a request
 
     if (!isRegistered) {
-      if (loginData.email==="" || loginData.password==="") {
+      if (loginData.email === "" || loginData.password === "") {
         toast.error("Please enter all the fields", {
-          position: "top-right"
+          position: "top-right",
         });
-        return ;
+        return;
       }
-     
     }
 
-    if (isRegistered && (loginData.email==="" || loginData.password==="")) {
+    if (isRegistered && (loginData.email === "" || loginData.password === "")) {
       toast.error("Please enter all the fields", {
-        position: "top-right"
+        position: "top-right",
       });
       return;
-    }
-    else {
+    } else {
       const isCorrectMail = loginData.email
         .toLowerCase()
         .match(
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
-        if (!isCorrectMail) {
-          toast.error("please enter a correct email", {
-            position: "top-right"
-          });
-          return;
-        }
-        else if (!isRegistered && loginData.password.length < 8) {
-          toast.error("please enter a longer password", {
-            position: "top-right"
-          });
-          return;
-        } 
-      
+      if (!isCorrectMail) {
+        toast.error("please enter a correct email", {
+          position: "top-right",
+        });
+        return;
+      } else if (!isRegistered && loginData.password.length < 8) {
+        toast.error("please enter a longer password", {
+          position: "top-right",
+        });
+        return;
+      }
     }
 
-    
     setLogging(true);
     // calling the request
     LoginandSignup();
   };
   useEffect(() => {
-    
-    if (loggedIn){ 
-      login()
-      navigate("/message")};
+    if (loggedIn) {
+      login();
+      navigate("/message");
+    }
   }, [loggedIn]);
   useEffect(() => {
     if (Object.keys(error).length === 0) {
@@ -183,21 +178,29 @@ function Login() {
                 disabled={isLoading}
                 value={loginData.email}
                 handleChange={handleLoginDataChange}
-               
                 placeholder="example@email.com"
               />
 
-              <InputBox
-                label="Password"
-                name="password"
-                type="password"
-                disabled={isLoading}
-                value={loginData.password}
-                handleChange={handleLoginDataChange}
-               
-                placeholder="At least 8 characters"
-              />
-             
+              <div className="relative">
+                <InputBox
+                  label="Password"
+                  name="password"
+                  className={styles.passwordContainer}
+                  type={showPassword ? "text" : "password"} // Toggle password visibility
+                  disabled={isLoading}
+                  value={loginData.password}
+                  handleChange={handleLoginDataChange}
+                  placeholder="At least 8 characters"
+                />
+                <div
+                  className="absolute transform -translate-y-1/2 cursor-pointer right-4 top-2/3"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}{" "}
+                  {/* Show/Hide icon */}
+                </div>
+              </div>
+
               <Button
                 text={isRegistered ? "Sign in" : "Sign up"}
                 type="submit"
@@ -209,7 +212,7 @@ function Login() {
                     : "rgb(0, 144, 101)",
                 }}
               />
-              <div className="text-center mt-2 opacity-70">
+              <div className="mt-2 text-center opacity-70">
                 <span style={{ font: `'Inter', sans-serif` }}>OR</span>
               </div>
               <div

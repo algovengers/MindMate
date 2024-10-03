@@ -1,0 +1,28 @@
+.loading-bar {
+  width: 100%; /* Start from full width */
+  animation: load 2s linear infinite; /* Make it continuous */
+}
+
+@keyframes load {
+  0% {
+    transform: translateX(-100%); /* Start from left outside the container */
+  }
+  100% {
+    transform: translateX(100%); /* Move to right outside the container */
+  }
+}
+
+.dot-animation {
+  display: inline-block;
+  color: #3B82F6; /* Optional: Change the color of the dots */
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { 
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
